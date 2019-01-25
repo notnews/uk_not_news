@@ -18,7 +18,7 @@ What proportion of news is *not news*? What proportion of news stories are about
 
 #### Data
 
-Given copyright issues, we cannot share full-text data publicly. An abbreviated dataset without the story text but including the URL, source,  date, predicted and training labels can be [found here](https://doi.org/10.7910/DVN/YFIQAN). 
+Given copyright issues, we cannot share full-text data publicly. An abbreviated dataset without the story text but including the URL, source,  date, predicted and training labels can be [found here](https://doi.org/10.7910/DVN/VZ8DB3). 
 
 We are happy to share the raw article text data under the following conditions:
 
