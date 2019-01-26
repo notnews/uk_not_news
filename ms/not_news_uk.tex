@@ -1,0 +1,219 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[titletoc,title]{appendix}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{caption}
+\newcommand\fnote[1]{\captionsetup{font=small}\caption*{#1}}
+
+\usepackage{float}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\definecolor{dark-red}{rgb}{0.75,0.10,0.10} 
+\usepackage[margin=1in]{geometry}
+\usepackage[linkcolor=blue,
+            colorlinks=true,
+            urlcolor=blue,
+            pdfstartview={XYZ null null 1.00},
+            pdfpagemode=UseNone,
+            citecolor={blue},
+            pdftitle={UK Soft News}]{hyperref}
+
+\usepackage{multibib}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\geometry{letterpaper}               % This is 8.5x11 paper. Options are a4paper or a5paper or other... 
+\usepackage{graphicx}                % Handles inclusion of major graphics formats and allows use of 
+\usepackage{amsfonts,amssymb,amsbsy}
+\usepackage{amsxtra}
+\usepackage{natbib}
+\usepackage{longtable}
+
+\usepackage{verbatim}
+\setcitestyle{round,semicolon,aysep={},yysep={;}}
+\usepackage{setspace}             % Permits line spacing control. Options are \doublespacing, \onehalfspace
+\usepackage{sectsty}             % Permits control of section header styles
+\usepackage{lscape}
+\usepackage{fancyhdr}             % Permits header customization. See header section below.
+\usepackage{url}                 % Correctly formats URLs with the \url{} tag
+\usepackage{fullpage}             %1-inch margins
+\usepackage{multirow}
+\usepackage{rotating}
+\setlength{\parindent}{3em}
+\usepackage{subcaption}
+\usepackage[T1]{fontenc}
+%\usepackage{bm}
+\usepackage{libertine}
+%\usepackage{inconsolata}
+
+\usepackage{chngcntr}
+
+\title{\Large{Not News: Provision of Apolitical News in the British News Media}\footnote{Scripts behind the analysis can be downloaded at: \url{https://github.com/notnews/uk_not_news}. We are grateful to Kimberley Ortleb for assisting us in research.}}
+
+\author{Suriyan Laohaprapanon\thanks{Suriyan can be reached at: \href{mailto:suriyant@gmail.com}{\footnotesize{\texttt{suriyant@gmail.com}}}}\vspace{.5cm} \and Gaurav Sood\thanks{Gaurav can be reached at \href{mailto:gsood07@gmail.com}{\footnotesize{\texttt{gsood07@gmail.com}}}}}
+
+\date{\vspace{.5cm}\normalsize{\today}}
+
+\begin{document}
+\maketitle
+
+\begin{comment}
+
+setwd(paste0(githubdir, "uk_not_news/ms"))
+tools::texi2dvi("not_news_uk.tex", pdf = TRUE, clean = TRUE) 
+setwd(githubdir)
+
+\end{comment}
+
+\begin{abstract}
+\noindent What proportion of news is soft news? What proportion of articles published by a news outlet is about dining, travel, fashion, cooking, celebrity scandals, and other such things? Using a corpus of $\sim$ 5.4M web pages from 276 news outlets in the U.K. spanning 2003--2015, we estimate the provision of soft news on online news outlets. To measure soft news, we build a supervised model using text from articles whose URL structure provides a clear indication of the type of content. We validate the success of the classifier by hand coding 1,000 articles---the error rate is about 12\%. Using the classifier, we find that about 39\% of the articles are about topics other than public affairs. 
+\end{abstract}
+
+\clearpage
+\doublespacing
+
+News media is justly seen as vital to a healthy democracy. Consumption of news causes a wide variety of virtuous outcomes, from political participation to political accountability \citep{gentzkow2015, oberholzer2006media, snyder2008press, stromberg2004radio}. These benefits doubtlessly stem from consumption of policy- or policy-maker (or enforcer) relevant information, as opposed to say, news about cooking, fashion, and such \citep[see, for instance,][]{prior2003}. Thus, to assess the health of the fourth estate, it is vital to understand how much of the news is broadly about public affairs, and how much of it is about cooking, sports, travel, movie reviews, fashion, and such, and how that may be changing over time.
+
+To answer this important question, we build on prior work on measurement of public affairs news, modifying the previously proposed method in a small but important way to reduce generalization error. We then apply the method to estimate how much of the British news is broadly about public affairs using a corpus of $\sim$ 5.4M web pages from 276 separate news outlets in the U.K. spanning 2003--2015. 
+
+We measure soft news using a classifier based on keywords in the URL \citep{bakshy2015exposure, flaxman2016filter}. To ensure that the model generalizes, we use the entire story text but only rely on bigrams and trigrams that are common across outlets. The out of sample precision and recall of our model is about 88\% each. To estimate generalization error, we validate the success of the classifier by getting manually coded labels for 1,000 articles. The generalization error is very close to our model estimates at about 12\%.
+
+We use the model to classify our corpus. We find that about 39\% of all the articles are about non-public affairs. When we group articles by outlet, we find that, on average, 45\% of the articles in an outlet are about cooking, travel, entertainment, and similar such things. 
+
+\section*{Incentives for Soft News}
+What explains the provision of soft news on news websites? The conventional story goes something like this. Profit-maximizing private companies control many of the news media outlets. And to the extent that provision of soft news increases profits, for instance, by increasing the size of the audience or by reducing production costs, news media outlets provide soft news. But the story is a bit more nuanced. To explore the issues in depth, we start by looking at demand and segue into supply-side issues.
+
+Data suggest that there is strong demand for soft news \citep{arceneaux2013changing, barnhurst1997, flaxman2016filter, guess2016media}. But what explains demand for soft news? People probably want soft news because it entertains them. Another less obvious reason why people may want soft news is that it is good fodder for conversation. Politics is too controversial a topic in many social settings. And celebrities, popular television shows, etc. are less controversial, widely known facets of society that people can discuss without fear of offending others. Because of such reasons and reasons like these, apolitical news is popular. And in a capitalist media system \citep{curran2009media}, we expect customer tastes to matter. Much like \citet{gentzkow2006drives} show that customer tastes explain partisan bias, we suspect customer tastes also explain the provision of soft news.
+
+We also expect owner tastes to matter less over time. The conventional wisdom around the `oversupply' of political news in the 50s and 60s on network television in the U.S. is that the television network owners thought it in good taste to provide it. However, public listing of many of the media companies has likely changed owners palate (incentives), with a taste for profit replacing any public-minded instincts. Aside from that, deregulation of television, for instance, the 1996 Telecommunications Act in the U.S., the advent of Internet, which largely doesn't impinge on public resources, in lieu of which the government could regulate, has reduced government's role in shaping television content. 
+
+But this is just one part of the story. The other part is the collapse of the two major streams of newspaper revenue: 1) newspaper sales---people have become less inclined to pay for news post `free' access to content, and 2) paid classifieds---today, services like Craigslist and Facebook provide a cheaper (free) way to post classifieds. And to address the revenue shortfall, news media have looked to cut costs. 
+
+To reduce costs, news media have a lot of levers in hand, from making more extensive use of wire stories to reducing the number of foreign news bureaus \citep{schudson2005, shanor2013} to reducing the number journalists on staff to forcing journalists to produce more news articles (words, minimally) per week to turning to freelancers for reporting. The switch to soft news is likely part of the same strategy. News about celebrities and turkey contests is cheaper to produce than sending a journalist to Pakistan. And news media may substitute apolitical news for political news as a way to respond to lower revenues \citep{cage2012trash, davis1998new, kalb1998}.
+
+When faced with lower revenues and financial pressures, newspapers can respond not just by finding cheaper ways to produce existing content (at lower quality), reducing, or replacing the content, but by also adding to it. For instance, newspapers may add a `lifestyle' section as a way to lure new customers (and keep old ones) without adding significantly to the costs. The reason for that is as follows. Easily detachable section based layout allows newspapers to cater to multiple audiences at the same time. (Television and radio, by contrast, are different. Tuning into television means that you and everyone else in the earshot is exposed to the channel you are tuned into unless, of course, you listen using headphones.) A surfeit of web-enabled devices means that news websites are similar to paper versions in that they can also simultaneously cater to multiple audiences. For instance, the politically interested Democrat in the family may go to \href{huffingtonpost.com}{huffingtonpost.com} for reading up on the latest Republican outrage, while the celebrity-obsessed member of the family may go there for the latest gossip. 
+
+In all, strong demand for soft news, declining regulation, declining influence of owner tastes, and declining revenue plausibly contribute to provision of soft news on news sites.
+
+\section*{Data and Measurement}
+Our corpus has $\sim 5.73M$ de-duped web pages. We filter on years for which we have more than 10,000 web pages. It leaves us with $\sim 5.71M$  spanning 2003--2015. Next, we drop web pages for which we don't have a URL. Doing that leaves us with about $\sim 5.44M$ web pages. For about $2K$ articles, we can't parse the domain name mostly because they have an IP address than a domain. We remove these web pages as well. This leaves us with 5,442,931 articles. Before we cull the data further, we clean outlet labels. 
+
+To produce clean outlet labels, we start by stripping leading and trailing spaces in outlet names. Next, we manually sift through the domains and combine domains that track the same source. Lastly, we manually create outlet names based on domain name and source name from the metadata of the web pages. We use these outlet labels to filter on sources with 1,000 or more web pages. (We feel that we would have too little data on other outlets to make reliable judgments.) This leaves us with 5,392,953 articles spanning 276 outlets. This serves as our final dataset. Appendix \ref{si_media_sum_uk} provides a summary of the data including the number of transcripts per outlet, and the range of dates for which we have the data. (To better understand the limitations of the sample, we plot the total number of web pages per outlet per year, and tally other things like weeks with zero transcripts per source, in the \href{https://github.com/not_news/uk_not_news/blob/master/scripts/01_subset_summarize_uk_news_media_data_by_label.ipynb}{Jupyter Notebook}.)
+
+To measure soft news, we use machine learning.  We start by taking a random sample of 1M news articles from our final dataset. Then, following \citet{bakshy2015exposure} and \citet{flaxman2016filter}, we use keywords in the URL to code the content of the web pages. In particular, after manually inspecting a large random sample, we label all URLs that match the following regular expression as political news:
+
+\begin{quote}
+politi|world|national|uk-news|scottish-news|news-eu|state|local|elect|vote|govern|\\
+campaign|war|polic|econ|unemploy|energy|educa|healthcare|immigration
+\end{quote}
+
+\noindent And we label all URLs which match the following regular expression as soft news: 
+\begin{quote}
+sport|football|entertainment|culture|arts|fashion|style|lifestyle|life-style|leisure|\\
+celeb|movie|music|gossip|food|travel|horoscope|weather|gadget
+\end{quote}
+
+Given that it is technically possible for a URL to have both sets of keywords, we further limit ourselves to URLs where the categorization is unique. We code the category of all other URLs as missing. This leaves us with a sample of 372,163 articles. We pre-process the news articles, lemmatizing, removing `stop words,' and punctuation, losing all words less than two characters long, and converting all the words to lower case. We further assume a 1-, 2- Markov model of language, storing just frequency of bi-grams and tri-grams and removing order information. (See \citet{gentzkow2010} and \citet{MartinYurukoglu2014}, among others who have used similar assumptions in modeling similar text.) For lower generalization error and for learning a model that isn't source specific, we only keep bi- and tri-grams that appear in 50 or more outlets. This leaves us with a vocabulary of 46,711 tokens. Further filtering on tokens that appear at least 100 times leaves us with a vocabulary size of 37,582. 
+
+Next, we split the data into train (80\%) and test (20\%), and train a regularized Logistic Regression classifier \citep{zou2005regularization} on the training set, using cross-validation to pick the appropriate $\lambda$. Table \ref{tab:url_conf_matrix} presents out of sample performance of the model. The classifier is fairly accurate, correctly classifying 89\% of the apolitical articles out of sample.
+
+\begin{table}[!htb]
+\centering
+\caption{Out-of-sample Performance of the Model} 
+\label{tab:url_conf_matrix}
+\begin{tabular}{lcccc}
+\hline
+labels & precision   &  recall  &   f1-score  &   support \\
+\hline
+Soft News      & 0.89    &   0.87    &   0.88   &    35,912 \\
+News          & 0.86    &   0.90    &   0.88   &    38,521 \\
+\hline
+\end{tabular}
+\end{table}
+
+To further validate the model, we tabulate the top 100 predictors of news and soft news in Table \ref{tab:top_100_hard} and Table \ref{tab:top_100_soft} respectively. The tables make for a reassuring reading. The top predictors of news include bigrams and trigrams like ``nation news,'' ``war crime,'' ``helmand provinc,'' ``mr obama,'' ``mr brown,'' etc. And the top predictors of soft news include bigrams and trigrams like ``food drink,'' ``britney spear,'' ``manchest unit,'' ``box offic,'' ``aston villa,'' etc.  
+
+\singlespacing
+
+\input{../tabs/url_uk_top100_hard.tex}
+
+\clearpage
+\input{../tabs/url_uk_top100_soft.tex}
+
+\doublespacing
+
+\section*{Results}
+We start by describing the overall provision of soft news. We treat each article as an observation, and plot the density of soft news (see Figure \ref{fig:agg_density}).  Nearly 39\% of the articles are about cooking, sports, lifestyle, and such topics. This number, however, may not be a good guide to provision of soft news across outlets. For instance, if the least political outlets are also the most prolific, treating each article the same would lead us to think that the average is higher. So, next, we tallied the proportion of soft news stories in each of the outlets. The average percentage of soft news stories per outlet is nearly 45\% while the median is 46\% and the 25th percentile is an astonishing 38\%. \textit{Haringey Independent} tops the charts with 78.3\% of its articles being soft news. In all, it appears that a hefty proportion of news articles across outlets are about soft news.
+
+\begin{figure}[!htbp]
+\centering
+\caption{Share of Soft News Across Outlets}
+\includegraphics[scale=.9]{../figs/uk_not_news_by_outlet.pdf}
+\label{fig:agg_density}
+\end{figure}
+
+Figure \ref{fig:uk_dot_plot} highlights provision of soft news in some prominent outlets. Expectedly, the tabloid \textit{The Daily Star} takes the top spot with 66\%. Somewhat surprisingly, about 48\% the articles on BBC are soft news. The commensurate number for \textit{The Guardian} is 41\%. 
+
+\begin{figure}[!htbp]
+\centering
+\caption{Share of Soft News Across Prominent Outlets}
+\includegraphics[scale = .9]{../figs/uk_not_news_by_outlet_main_dotplot.pdf}
+\label{fig:uk_dot_plot}
+\end{figure}
+
+Splitting by domain rather than outlet doesn't change the complexion of the results (see Figure \ref{fig:agg_density_domain}). The average proportion of soft news across domains is 46\%. The median is 45\%, and the maximum is 74\% (for \url{chroniclelive.co.uk}).
+
+Next, we estimate the provision of soft news over time. To estimate how the provision of soft news is changing over time, we start by regressing probability an article is soft news on year rescaled to range from 0 (2003) to 1 (2015) and one-hot-encoded outlets. This gives us an estimate of `average' change assuming that the outlet mix of our sample remains the same. The results suggests that over time the proportion of soft news has increased by roughly 8\%. 
+
+To explicitly look at within outlet trends, we subset on rows for each source and estimate trend for each outlet by regressing probability of a soft news article on year, rescaled as above. We then average coefficients over all these regressions and then estimate how on the provision of soft news is changing across outlets on average. This specification gives each outlet equal weight. If we do that, we get an estimate of about 1\% increase in soft news over time.
+
+\section*{Discussion}
+
+Near tautologically, lower the political content, lesser the opportunity to learn something relevant for political decision making \citep{prior2003, curran2009media}, and greater the opportunity to be distracted. This is not to say that news about celebrities, entertainment, food, and travel do not affect people's political attitudes and beliefs. But it is to say that people will not be better at holding politicians accountable or be better able to execute their preferences, if they consume more soft news. In this article, we shed light on measuring soft news and describing the privision of soft news. And in shedding light on this important measure of the quality of news, the article contributes to the literature on media effects.
+
+\clearpage
+\normalfont
+\normalsize
+\doublespace%
+\bibliographystyle{apsr}
+\bibliography{not_news}  
+
+\clearpage
+\appendix
+\renewcommand{\thesection}{SI \arabic{section}}
+\setcounter{table}{0}\renewcommand\thetable{\thesection.\arabic{table}}  
+\setcounter{figure}{0}\renewcommand\thefigure{\thesection.\arabic{figure}}
+\counterwithin{figure}{section}
+
+\section{Supporting Information}
+
+\subsection{Summary of the Media Data}
+\label{si_media_sum_uk}
+A complete list of domains from which we collected articles, the range of dates for which we have data from each, and the number of articles.
+
+\scriptsize
+\input{../tabs/media_summary.tex}
+
+\clearpage
+
+\begin{table}[!htb]
+\centering
+\caption{Confusion Matrix: Predicted Vs. Manual Coding} 
+\label{tab:url_manual_conf_matrix}
+\begin{tabular}{lcccc}
+\hline
+labels   &  News   &  Soft News\\
+\hline
+News     & 482    & 67\\
+Soft News & 55    & 388\\
+\hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{figure}[!htbp]
+\centering
+\caption{Share of Soft News Across Domains}
+\includegraphics[scale=.9]{../figs/prop_soft_news_by_domain.pdf}
+\label{fig:agg_density_domain}
+\end{figure}
+
+\end{document}

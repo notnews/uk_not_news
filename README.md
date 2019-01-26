@@ -18,14 +18,14 @@ What proportion of news is *not news*? What proportion of news stories are about
 
 #### Data
 
-Given copyright issues, we cannot share full-text data publicly. An abbreviated dataset without the story text but including the URL, source,  date, predicted and training labels can be [found here](https://doi.org/10.7910/DVN/VZ8DB3). 
+Given copyright issues, we cannot share the full-text of news articles publicly. A dataset without the story text but including the URL, source,  date, predicted and training labels can be [found here](https://doi.org/10.7910/DVN/VZ8DB3). 
 
 We are happy to share the raw article text data under the following conditions:
 
 * you will not share the data with anyone else, and 
-* you will only use it for research purposes. 
+* you will only use it for research purposes 
 
-To request the data, please fill out this [form](https://goo.gl/forms/WMv6qtmr5H4IehgF3). If your request is approved, you will get read access to a file in a Google Coldline Storage bucket for a month. The bucket is setup such that the requester pays. Thus, you will need to create a project that can be used for billing.
+To request the data, please fill out this [form](https://goo.gl/forms/WMv6qtmr5H4IehgF3). If your request is approved, you will get read access to a file in a Google Coldline Storage bucket for a month. The bucket is setup such that the requester pays---you will need to create a project that can be used for billing.
 
 #### Authors
 
