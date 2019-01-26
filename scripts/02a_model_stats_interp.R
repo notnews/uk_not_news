@@ -16,8 +16,8 @@ library(readr)
 library(dplyr)
 
 # Read in data
-top100_hard <- read.csv("not_news/tabs/url_uk_top100_hard.csv")
-top100_soft <- read.csv("not_news/tabs/url_uk_top100_soft.csv")
+top100_hard <- read.csv("uk_not_news/tabs/url_uk_top100_hard.csv")
+top100_soft <- read.csv("uk_not_news/tabs/url_uk_top100_soft.csv")
 
 # Subset and rename for final output
 top100_hard_tab <- cbind(top100_hard$term[1:34], top100_hard$term[35:68], c(top100_hard$term[69:100], "", "")) 
@@ -40,12 +40,12 @@ print(
         caption.placement = "top",
         tabular.environment = "longtable",
         table.placement = "!htb",
-        file = "not_news/tabs/url_uk_top100_hard.tex")
+        file = "uk_not_news/tabs/url_uk_top100_hard.tex")
 
 
 print(
       xtable(top100_soft_tab, 
-          caption = "Top 100 Predictors of Not News", 
+          caption = "Top 100 Predictors of Soft News", 
           align = c("p{0.10\\textwidth}", "p{0.3\\textwidth}",  "p{0.3\\textwidth}",  "p{0.3\\textwidth}"), label = "tab:top_100_soft"), 
         include.rownames = FALSE,
         floating = FALSE,
@@ -56,12 +56,12 @@ print(
         caption.placement = "top",
         tabular.environment = "longtable",
         table.placement = "!htb",
-        file = "not_news/tabs/url_uk_top100_soft.tex")
+        file = "uk_not_news/tabs/url_uk_top100_soft.tex")
 
 # Generalization Error Using Hand Coded Articles
-test_samp_manual <- read_csv("not_news/tabs/test_sample_coded.csv")
+test_samp_manual <- read_csv("uk_not_news/tabs/test_sample_coded.csv")
 
-uk_pred <- read_csv("not_news/tabs/uk_media_url_pred.csv")
+uk_pred <- read_csv("uk_not_news/tabs/uk_media_url_pred.csv")
 uk_pred$id <- 0:(nrow(uk_pred) - 1)
 
 test <- test_samp_manual %>%

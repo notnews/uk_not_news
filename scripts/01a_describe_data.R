@@ -10,7 +10,7 @@ library(xtable)
 library(dplyr)
 
 # Read in data
-uk_sum <- read.csv("not_news/tabs/uk_media_clean_summarized_by_label_gt1k.csv")
+uk_sum <- read.csv("uk_not_news/tabs/uk_media_clean_summarized_by_label_gt1k.csv")
 
 # Convert date to date
 uk_sum$from_date <- as.Date(uk_sum$from_date, format = '%Y-%m-%d')
@@ -49,4 +49,4 @@ print(
         sanitize.text.function = function(x){x},
         caption.placement = "top",
         table.placement = "!htb",
-        file = "not_news/tabs/media_summary.tex")
+        file = "uk_not_news/tabs/media_summary.tex")
