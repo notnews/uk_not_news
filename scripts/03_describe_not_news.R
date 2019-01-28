@@ -53,7 +53,7 @@ ggplot(uk_not_news_by_outlet, aes(share_of_not_news)) +
   geom_density(aes(y = ..scaled..), color = "#42C4C7", alpha = 0.35) +
   annotate("text", label = paste("Mean =", nolead0s(round(avg_outlet_prop, 2))), x = .54, y = 1, size = 3, colour = "black") + 
   geom_vline(xintercept = mean(uk_not_news_by_outlet$share_of_not_news, na.rm = T), col = "#cc0000", alpha = .75, linetype = "dotted") + 
-  xlab("Share of Not-News in an Outlet") +
+  xlab("Share of Soft News in an Outlet") +
   ylab("") +
   scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, .1), labels = nolead0s(seq(0, 1, .1)), expand = c(.03, .03)) +
   scale_x_continuous(breaks = seq(0, 1, .1), labels = nolead0s(seq(0, 1, .1)), expand = c(.03, .03)) +
@@ -91,7 +91,7 @@ ggplot(uk_not_news_by_outlet_main, aes(share_of_not_news, src_name, order = shar
   ylab("") +
   xlab("") +
   scale_colour_manual(values = c("#dd3333", "#3333dd")) +
-  scale_x_continuous("Proportion of Not News", breaks = seq(0, 1, .1), labels = nolead0s(seq(0, 1, .1))) +
+  scale_x_continuous("Proportion of Soft News Stories", breaks = seq(0, 1, .1), labels = nolead0s(seq(0, 1, .1))) +
   cust_theme +
   theme(legend.position = "none")
 
@@ -127,7 +127,7 @@ ggplot(uk_not_news_by_domain, aes(share_of_not_news)) +
   geom_density(aes(y = ..scaled..), color = "#42C4C7", alpha = 0.35) +
   geom_vline(xintercept = median(uk_not_news_by_domain$share_of_not_news), col = "#cc0000", alpha = .75, linetype = "dotted") + 
   annotate("text", label = paste("Mean =", nolead0s(round(avg_outlet_prop, 2))), x = .54, y = 1, size = 3, colour = "black") + 
-  xlab("Share of Not-News in a Domain") +
+  xlab("Proportion of Soft News Stories") +
   ylab("") +
   scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, .1), labels = nolead0s(seq(0, 1, .1)), expand = c(.03, .03)) +
   scale_x_continuous(breaks = seq(0, 1, .1), labels = nolead0s(seq(0, 1, .1)), expand = c(.03, .03)) +
@@ -138,7 +138,7 @@ ggsave("uk_not_news/figs/prop_soft_news_by_domain.pdf")
 
 print(
       xtable(uk_not_news_by_domain, 
-          caption = "Share of Not-News By Domain", 
+          caption = "Share of Soft News By Domain", 
           align = c("p{0.1\\textwidth}",  "p{0.3\\textwidth}", "p{0.1\\textwidth}", "p{0.15\\textwidth}"), label = "tab:outlet_not_news"), 
         include.rownames = FALSE,
         floating = FALSE,

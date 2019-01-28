@@ -46,7 +46,7 @@
 
 \usepackage{chngcntr}
 
-\title{\Large{Not News: Provision of Apolitical News in the British News Media}\footnote{Scripts behind the analysis can be downloaded at: \url{https://github.com/notnews/uk_not_news}. We are grateful to Kimberley Ortleb for assisting us in research.}}
+\title{\Large{Not News: Provision of Apolitical News in the British News Media}\footnote{Scripts behind the analysis can be downloaded at: \url{https://github.com/notnews/uk_not_news}. We are grateful to Kimberley Ortleb for assisting us in research. The paper benefitted from comments from Jamie Druckman, Daniel Stone, and Levi Boxell.}}
 
 \author{Suriyan Laohaprapanon\thanks{Suriyan can be reached at: \href{mailto:suriyant@gmail.com}{\footnotesize{\texttt{suriyant@gmail.com}}}}\vspace{.5cm} \and Gaurav Sood\thanks{Gaurav can be reached at \href{mailto:gsood07@gmail.com}{\footnotesize{\texttt{gsood07@gmail.com}}}}}
 
@@ -166,7 +166,6 @@ Next, we estimate the provision of soft news over time. To estimate how the prov
 To explicitly look at within outlet trends, we subset on rows for each source and estimate trend for each outlet by regressing probability of a soft news article on year, rescaled as above. We then average coefficients over all these regressions and then estimate how on the provision of soft news is changing across outlets on average. This specification gives each outlet equal weight. If we do that, we get an estimate of about 1\% increase in soft news over time.
 
 \section*{Discussion}
-
 Near tautologically, lower the political content, lesser the opportunity to learn something relevant for political decision making \citep{prior2003, curran2009media}, and greater the opportunity to be distracted. This is not to say that news about celebrities, entertainment, food, and travel do not affect people's political attitudes and beliefs. But it is to say that people will not be better at holding politicians accountable or be better able to execute their preferences, if they consume more soft news. In this article, we shed light on measuring soft news and describing the privision of soft news. And in shedding light on this important measure of the quality of news, the article contributes to the literature on media effects.
 
 \clearpage
@@ -183,16 +182,19 @@ Near tautologically, lower the political content, lesser the opportunity to lear
 \setcounter{figure}{0}\renewcommand\thefigure{\thesection.\arabic{figure}}
 \counterwithin{figure}{section}
 
-\section{Supporting Information}
-
-\subsection{Summary of the Media Data}
+\section{Summary of the Media Data}
 \label{si_media_sum_uk}
 A complete list of domains from which we collected articles, the range of dates for which we have data from each, and the number of articles.
 
 \scriptsize
 \input{../tabs/media_summary.tex}
 
-\clearpage
+\section{Manual Coding}
+
+\subsection*{Instructions for Manual Coding}
+We coded as news, stories about crime, economy, technology, politics, and local news. And coded as soft news, stories about celebrities/athletes, sports, lifestyle, travel, and obituaries. The majority of articles clearly fell into one topic, but sometimes an article would fall into two categories. Many articles were about celebrities/athletes, and this topic intersected a lot with not news topics, like crimes, lifestyle, travel, etc. The most common was news about celebrities/athletes committing a crime. The general rule I follow in this was is if the event would make the news if the person in it was not famous, it is news. If it would not, it is not news. This is quite subjective, so I will give examples. If a celebrity commits a minor crime, such as a traffic violation, then that is categorized as not news. If they commit a major crime, such as murder or rape, such as in 240067, it is categorized as news.
+
+\subsection*{Model Based Predictions Vs. Manual Coding} 
 
 \begin{table}[!htb]
 \centering
