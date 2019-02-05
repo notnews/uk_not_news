@@ -139,9 +139,10 @@ To further validate the model, we tabulate the top 100 predictors of news and so
 \input{../tabs/url_uk_top100_soft.tex}
 
 \doublespacing
+Lastly, to estimate generalization error of our model, we got a random set of 1,000 articles manually coded. For coding instructions, see \ref{si_manual_coding} for details about how we made our judgments. The upshot is that the generalization error is about the same as test error, at about 12\%. For the confusion matrix, see \ref{tab:si_manual_conf_matrix}.
 
 \section*{Results}
-We start by describing the overall provision of soft news. We treat each article as an observation, and plot the density of soft news (see Figure \ref{fig:agg_density}).  Nearly 39\% of the articles are about cooking, sports, lifestyle, and such topics. This number, however, may not be a good guide to provision of soft news across outlets. For instance, if the least political outlets are also the most prolific, treating each article the same would lead us to think that the average is higher. So, next, we tallied the proportion of soft news stories in each of the outlets. The average percentage of soft news stories per outlet is nearly 45\% while the median is 46\% and the 25th percentile is an astonishing 38\%. \textit{Haringey Independent} tops the charts with 78.3\% of its articles being soft news. In all, it appears that a hefty proportion of news articles across outlets are about soft news.
+We start by describing the overall provision of soft news. We treat each article as an observation, and plot the density of soft news (see Figure \ref{fig:agg_density}).  Nearly 39\% of the articles are about cooking, sports, lifestyle, and such topics. This number, however, may not be a good guide to provision of soft news across outlets. For instance, if the least political outlets are also the most prolific, treating each article the same would lead us to think that the average is higher. So, next, we tallied the proportion of soft news stories in each of the outlets. The average percentage of soft news stories per outlet is nearly 45\% while the median is 46\% and the 25th percentile is an astonishing 38\%. \textit{Haringey Independent} tops the charts with 78.3\% of its articles being soft news. In all, it appears that a hefty proportion of news articles across outlets are about soft news. But there is a subtle point hidden in these results---soft news outlets are not zero hard news outlets. Many outlets carry at least some hard news, albeit our definition of hard news is barebones.
 
 \begin{figure}[!htbp]
 \centering
@@ -168,6 +169,12 @@ To explicitly look at within outlet trends, we subset on rows for each source an
 \section*{Discussion}
 Near tautologically, lower the political content, lesser the opportunity to learn something relevant for political decision making \citep{prior2003, curran2009media}, and greater the opportunity to be distracted. This is not to say that news about celebrities, entertainment, food, and travel do not affect people's political attitudes and beliefs. But it is to say that people will not be better at holding politicians accountable or be better able to execute their preferences, if they consume more soft news. In this article, we shed light on measuring soft news and describing the privision of soft news. And in shedding light on this important measure of the quality of news, the article contributes to the literature on media effects.
 
+This article, however, is a start than an end to the measurement of quality of news. For instance, our definition of hard news leaves much to be desired. The conventional wisdom is that most hard news is low-calorie---sensationalist, episodic, relying on too few sources and providing too little information. But to measure the quality of hard news, we likely need an original labeled dataset.
+
+The upshot of the article is a baseline on the provision of soft news. And while the estimates are expectedly higher than the proportion of soft news in \textit{New York Times} (see \href{https://github.com/notnews/good_nyt}{here}), they are not shockingly so. The strange fact is that some outlets that are devoted to soft news still produce a fair bit of hard news, albeit based on our barebones definition.
+
+The deeper question is what are the consequences of provision of soft news? At one end, it may lure people not interested in news to news websites where they may read hard news. (We say this because research suggests that people don't start consuming news media with a set agenda and that small changes have a sizable effect on what they consume \citep{martin2017bias} (see also \citep{sood2018dont}).) At another end, it may lead people who are there to consume hard news to be distracted and to consume soft news instead of hard news. But the equilibrium impact may still be hard to measure given provision of soft news probably bulks up newspaper bottom lines and newspapers may funnel some of the profits to 'better' reporting on other news or just staying alive.
+
 \clearpage
 \normalfont
 \normalsize
@@ -191,16 +198,15 @@ A complete list of domains from which we collected articles, the range of dates 
 
 \clearpage
 \section{Manual Coding}
-
 \subsection{Instructions for Manual Coding}
+\label{si_manual_coding}
 We coded as news, stories about crime, economy, technology, politics, and local news. And coded as soft news, stories about celebrities/athletes, sports, lifestyle, travel, and obituaries. The majority of articles clearly fell into one topic, but sometimes an article would fall into two categories. Many articles were about celebrities/athletes, and this topic intersected a lot with not news topics, like crimes, lifestyle, travel, etc. The most common was news about celebrities/athletes committing a crime. The general rule I follow in this was is if the event would make the news if the person in it was not famous, it is news. If it would not, it is not news. This is quite subjective, so I will give examples. If a celebrity commits a minor crime, such as a traffic violation, then that is categorized as not news. If they commit a major crime, such as murder or rape, such as in 240067, it is categorized as news.
 
 \subsection{Model Based Predictions Vs. Manual Coding} 
-
 \begin{table}[!htb]
 \centering
 \caption{Confusion Matrix: Predicted Vs. Manual Coding} 
-\label{tab:url_manual_conf_matrix}
+\label{tab:si_manual_conf_matrix}
 \begin{tabular}{lcccc}
 \hline
 labels   &  News   &  Soft News\\
